@@ -24,6 +24,35 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         myPickerView.dataSource = self
         myPickerView.delegate = self
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("View Will Appear")
+        lblOne.text = ""
+        lblNew.text = ""
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("view Did Appear")
+        myPickerView.selectRow(0, inComponent: 0, animated: true)
+        myPickerView.selectRow(0, inComponent: 1, animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        switch segue.identifier {
+        case "goNextPage":
+            if let nextVC = segue.destination as? Page2ViewController {
+                nextVC.bld = lblOne.text ?? "unknown"
+                nextVC.str = lblNew.text ?? "unknown"
+            }
+        default:
+            break;
+        }
+    }
+    
     //MARK:Picker View Data Source & Delegate
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 2

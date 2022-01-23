@@ -8,22 +8,13 @@
 import UIKit
 
 class Page2ViewController: UIViewController {
-
+    @IBOutlet weak var textView: UITextView!
+    var bld = ""
+    var str = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        print("bld: \(bld), str: \(str)")
+        
+        textView.text += "星座: \(str) \t 血型: \(bld)"
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
